@@ -95,8 +95,8 @@
       "function cooldown() view returns (uint256)"
     ];
 
-const pharosParams = {
-  chainId: "0xA9B90", // 688688 دهدهی → هگز
+const pharosChainId = ethers.toBeHex(688688); // تبدیل خودکار به هگز معتبر
+
   chainName: "Pharos Testnet",
   nativeCurrency: { name: "PHRS", symbol: "PHRS", decimals: 18 },
   rpcUrls: ["https://testnet.dplabs-internal.com"],
