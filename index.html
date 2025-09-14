@@ -41,8 +41,6 @@
     button:disabled { background: #888; cursor: not-allowed; }
     #address { margin-top: 0.5rem; font-size: 0.9rem; word-break: break-all; }
     #status { margin-top: 1rem; font-size: 0.9rem; min-height: 1.2em; }
-    
-    /* تیک سبز انیمیشنی */
     .checkmark {
       display: inline-block;
       width: 25px;
@@ -97,6 +95,14 @@
       "function cooldown() view returns (uint256)"
     ];
 
+    const pharosParams = {
+      chainId: "0xA9B90", // 688688 دهدهی → هگز: 0xA9B90
+      chainName: "Pharos Testnet",
+      nativeCurrency: { name: "PHRS", symbol: "PHRS", decimals: 18 },
+      rpcUrls: ["https://testnet.dplabs-internal.com"],
+      blockExplorerUrls: ["https://testnet.pharosscan.xyz"]
+    };
+
     let provider, signer, faucetContract;
 
     connectBtn.onclick = async () => {
@@ -105,14 +111,34 @@
           status.innerText = "❌ Please install MetaMask!";
           return;
         }
+
+        // اتصال حساب‌ها
         await window.ethereum.request({ method: "eth_requestAccounts" });
         provider = new ethers.BrowserProvider(window.ethereum);
         signer = await provider.getSigner();
         const addr = await signer.getAddress();
+
+        // سوییچ یا اضافه کردن شبکه Pharos
+        try {
+          await window.ethereum.request({
+            method: "wallet_switchEthereumChain",
+            params: [{ chainId: pharosParams.chainId }]
+          });
+        } catch (switchError) {
+          if (switchError.code === 4902) {
+            await window.ethereum.request({
+              method: "wallet_addEthereumChain",
+              params: [pharosParams]
+            });
+          } else {
+            throw switchError;
+          }
+        }
+
         addrDiv.innerText = "Connected: " + addr;
         faucetContract = new ethers.Contract(faucetAddress, faucetAbi, signer);
         claimBtn.disabled = false;
-        status.innerHTML = "✅ Wallet connected!";
+        status.innerHTML = "✅ Wallet connected to Pharos Testnet!";
       } catch (err) {
         status.innerText = "❌ Error connecting wallet: " + err.message;
       }
