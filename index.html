@@ -95,13 +95,14 @@
       "function cooldown() view returns (uint256)"
     ];
 
-    const pharosParams = {
-      chainId: "0xA9B90", // 688688 دهدهی → هگز: 0xA9B90
-      chainName: "Pharos Testnet",
-      nativeCurrency: { name: "PHRS", symbol: "PHRS", decimals: 18 },
-      rpcUrls: ["https://testnet.dplabs-internal.com"],
-      blockExplorerUrls: ["https://testnet.pharosscan.xyz"]
-    };
+const pharosParams = {
+  chainId: "0xA9B90", // 688688 دهدهی → هگز
+  chainName: "Pharos Testnet",
+  nativeCurrency: { name: "PHRS", symbol: "PHRS", decimals: 18 },
+  rpcUrls: ["https://testnet.dplabs-internal.com"],
+  blockExplorerUrls: ["https://testnet.pharosscan.xyz"]
+};
+
 
     let provider, signer, faucetContract;
 
