@@ -1,16 +1,16 @@
-```markdown
+
 # Technocore DID Starter — راهنمای نصب
 
 ## ۱. دانلود پروژه
 
-```bash
+```
 git clone https://github.com/zunmax/technocore-did-starter.git
 cd technocore-did-starter
 ```
 
 ## ۲. ساخت محیط پایتون
 
-```bash
+```
 python -m venv .venv
 source .venv/bin/activate
 ```
