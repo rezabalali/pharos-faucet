@@ -16,6 +16,20 @@ dsvdsvdsv
 ## Requirements kjlkjnlknl
 - لیست چیزهایی که لازم است
 
+
+```bash
+pkg update && pkg upgrade
+
+
+
+یا بدون مشخص کردن زبان:
+
+```markdown
+```
+pkg update && pkg upgrade
+```
+
+
 ---
 
 ## Setup
