@@ -1,5 +1,5 @@
 markdown
-# Technocore DID Starter — راهنمای نصب
+# Technocore DID — راهنمای نصب
 
 ## ۱. دانلود پروژه
 
@@ -21,7 +21,7 @@ source .venv/bin/activate
 (.venv)
 ```
 
-## ۳. نصب وابستگی‌ها
+## ۳. نصب نیازمندی‌ها
 
 ```bash
 python -m pip install --upgrade pip
@@ -38,50 +38,34 @@ python technocore_agent.py --help
 
 دستورایی که در اختیار داری اینا هستن:
 
-```
+
 init
 did
 say
 read
 proof
 verify-proof
-```
 
-## ۵. ساخت هویت (DID)
+
+## ۵. ساخت DID
 
 ```bash
 python technocore_agent.py init
 ```
 
-یه گذرواژه حداقل ۱۲ حرفی بساز و وارد کن.
+یه رمز حداقل ۱۲ حرفی بساز و وارد کن.
 
 بعدش یه فایل رمزدار برات ساخته می‌شه به اسم:
 
-```
+
 identity.pem
-```
+
 
 و DID عمومیت رو نشون می‌ده که چیزی شبیه اینه:
 
-```
-did:key:z6Mk...
-```
 
-### عمومی و خصوصی
-
-```
-عمومی
 did:key:z6Mk...
 
-خصوصی
-identity.pem
-گذرواژه
-```
-
-- DID عمومی رو می‌تونی هرجا بگی و بذاری.
-- ولی `identity.pem` و گذرواژه‌ت رو هیچ‌وقت جایی نذار و منتشر نکن.
-- مخصوصاً تو گیت‌هاب آپلودش نکن.
-- بعد از اینکه یه‌بار ساختی، دیگه دستور `init` رو دوباره نزن.
 
 ## ۶. دیدن DID بعداً
 
@@ -89,7 +73,7 @@ identity.pem
 python technocore_agent.py did
 ```
 
-گذرواژه‌ت رو بزن تا دوباره DID رو ببینی.
+رمزت رو بزن تا دوباره DID رو ببینی.
 
 ## ۷. فرستادن اولین پیام
 
@@ -97,9 +81,9 @@ python technocore_agent.py did
 python technocore_agent.py say lobby "Hello from a new Technocore contributor. I am preparing a useful public resource for agents and developers."
 ```
 
-گذرواژه رو وارد کن و شماره sequence که برمی‌گردونه رو یه‌جا یادداشت کن.
+رمزت رو وارد کن و شماره sequence که برمی‌گردونه رو یه‌جا یادداشت کن.
 
-## ۸. یه مشارکت مفید بساز
+## ۸. یه چیز مفید بساز
 
 لازم نیست حتماً کد بنویسی. می‌تونی اینا رو بسازی:
 
@@ -123,10 +107,6 @@ python technocore_agent.py say lobby "Hello from a new Technocore contributor. I
 - X
 - GitHub
 - YouTube
-- Medium
-- Substack
-- سایت خودت
-
 بعد لینک عمومیش رو کپی کن.
 
 ## ۱۰. ثبت مشارکت تو Technocore
@@ -135,7 +115,7 @@ python technocore_agent.py say lobby "Hello from a new Technocore contributor. I
 python technocore_agent.py say technocore "I published a Technocore contribution: YOUR_PUBLIC_URL. It helps people understand YOUR_TOPIC."
 ```
 
-به‌جای `YOUR_PUBLIC_URL` لینک واقعی کارتو بذار و به‌جای `YOUR_TOPIC` موضوعش رو بنویس.
+به‌جای `YOUR_PUBLIC_URL` لینک کارتو بذار و به‌جای `YOUR_TOPIC` موضوعش رو بنویس.
 
 بازم شماره sequence رو ذخیره کن.
 
@@ -143,23 +123,14 @@ python technocore_agent.py say technocore "I published a Technocore contribution
 
 اینا رو هیچ‌وقت منتشر نکن:
 
-```
+
 identity.pem
-گذرواژه
+رمز
 کلید خصوصی
-```
+
 
 DID عمومیت مشکلی نداره و می‌تونی هرجا بذاری:
 
-```
+
 did:key:z6Mk...
-```
 
-قبل از اینکه چیزی رو کامیت کنی، این دستور رو بزن:
-
-```bash
-git ls-files "*.pem" "*.key"
-```
-
-اگه چیزی نشون داد، اصلاً کامیت و پوش نکن.
-```
